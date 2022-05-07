@@ -1,8 +1,6 @@
 import type { AWS } from '@serverless/typescript';
 
 import hello from '@functions/hello';
-import snsHello from '@functions/sns-hello'
-import scheduleHello from '@functions/schedule-hello';
 
 const serverlessConfiguration: AWS = {
   service: 'serverless-node-ts-sample',
@@ -11,6 +9,7 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
+    region: 'us-east-1',
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -21,7 +20,7 @@ const serverlessConfiguration: AWS = {
     },
   },
   // import the function via paths
-  functions: { hello , snsHello , scheduleHello },
+  functions: { hello },
   package: { individually: true },
   custom: {
     esbuild: {
